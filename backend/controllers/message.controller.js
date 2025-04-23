@@ -45,7 +45,12 @@ export const getMessages = async (req, res) => {
         const conversation = await Conversation.findOne({
             participants: { $all: [senderId, userToChatId]},
         }).populate("messages");
-        res.status(200).json(conversation.messages);
+
+		if(!conversation) return res.status(200).json([]);
+
+		const messages = conversation.messages;
+
+        res.status(200).json(messages);
     }catch(err){
         console.log("Error getting messages:", err.message);
         res.status(500).json({ err: "Error getting messages" });
