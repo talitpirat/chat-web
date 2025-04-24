@@ -1,5 +1,6 @@
 import React from 'react'
-import Conversation from './Conversation'
+import Conversation from './Conversation.jsx'
+
 
 function Conversations() {
   return (
