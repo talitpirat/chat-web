@@ -1,11 +1,11 @@
 import GenderCheckbox from './GenderCheckbox'
 import { Link } from 'react-router-dom'
 import useSignup from '../../hooks/useSignup'
-import { useState } from 'react'
+import React from 'react'
 
 function SignUp() {
 
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = React.useState({
     fullName: "",
     username: "",
     password: "",
@@ -72,7 +72,12 @@ function SignUp() {
           </div>
           <Link to={'/login'} className='text-sm hover:underline hover:text-blue-600 inline-block text-gray-300' >Already have an account?</Link>
           <div>
-            <button className = 'btn btn-block btn-sm mt-2 border border-slate-900 bg-black text-gray-300'>Sign Up</button>
+            <button className = 'btn btn-block btn-sm mt-2 border border-slate-900 bg-black text-gray-300'
+            disabled={loading}
+            >
+              
+              {loading ? <span className="loading loading-spinner"></span> : "Sign Up"}
+            </button>
           </div>
         </form>
       </div>
